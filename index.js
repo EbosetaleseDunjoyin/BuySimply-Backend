@@ -22,7 +22,7 @@ app.listen(PORT, () => console.log(`Server Running on Port ${PORT}`));
 
 
 //Application Routes
-app.get("/",(res,req)=>{
+app.get("/",(req,res)=>{
     res.json({ message: "Server Works" });
 })
 app.use("/", authRoutes);

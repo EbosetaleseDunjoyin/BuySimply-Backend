@@ -13,6 +13,7 @@ const auth = async (req, res, next) => {
     if (token && isCustomAuth) {
       decodedData = jwt.verify(token, secret);
       req.userId = decodedData?.id;
+      req.user = decodedData
     } else {
       decodedData = jwt.decode(token);
 
@@ -35,6 +36,7 @@ const checkRole = (role) => (req, res, next) => {
      if (token && isCustomAuth) {
        decodedData = jwt.verify(token, secret);
        req.userId = decodedData?.id;
+       
      }else{
       res.status(400).json({ message: "Issue occured with token." });
      }
@@ -48,5 +50,6 @@ const checkRole = (role) => (req, res, next) => {
     console.error(error);
   }
 };
+
 
 export  { auth, checkRole };
