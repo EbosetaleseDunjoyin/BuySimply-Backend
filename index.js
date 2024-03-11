@@ -4,6 +4,7 @@ import cors from "cors";
 
 
 import authRoutes from "./routes/auth.js";
+import loanRoutes from "./routes/loans.js";
 
 //Express Initialization
 const app = express();
@@ -21,4 +22,8 @@ app.listen(PORT, () => console.log(`Server Running on Port ${PORT}`));
 
 
 //Application Routes
+app.get("/",(res,req)=>{
+    res.json({ message: "Server Works" });
+})
 app.use("/", authRoutes);
+app.use("/", loanRoutes);

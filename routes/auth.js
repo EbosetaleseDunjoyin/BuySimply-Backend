@@ -1,11 +1,12 @@
 import express from "express";
 import { authLogout, authLogin, getUsers } from "../controllers/authController.js";
+import { auth } from "../middleware/authMiddleware.js"
 
 
 const router = express.Router();
 
 router.post("/login", authLogin);
-router.delete("/logout", authLogout);
+router.post("/logout", auth, authLogout);
 router.get("/users",getUsers);
 
 
