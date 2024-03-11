@@ -1,16 +1,19 @@
-import fs from "fs";
+import * as fs from "fs";
 import path from "path";
 
 const filePath = path.resolve("./data/staffs.json");
 
-const users = async () => {
+const users = () => {
   try {
-    const data = await fs.promises.readFile(filePath, "utf8");
+    const data = fs.readFileSync(filePath, "utf8");
     return JSON.parse(data);
+    console.log(JSON.parse(data));
   } catch (err) {
     console.error("Error reading file:", err);
     return [];
   }
 };
 
-export default users;
+// console.log("users",users())
+
+export default users();
